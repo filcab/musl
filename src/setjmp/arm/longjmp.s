@@ -17,18 +17,19 @@ longjmp:
 	beq 3f
 	tst r1,#0x20
 	beq 2f
-	ldc p2, cr4, [ip], #48
+	ldc p2, c4, [ip], #48
 2:	tst r1,#0x40
 	beq 2f
-	ldc p11, cr8, [ip], #64
+    # Filcab: teensy's chip doesn't have an FPU
+	#ldc p11, c8, [ip], #64
 2:	tst r1,#0x200
 	beq 3f
-	ldcl p1, cr10, [ip], #8
-	ldcl p1, cr11, [ip], #8
-	ldcl p1, cr12, [ip], #8
-	ldcl p1, cr13, [ip], #8
-	ldcl p1, cr14, [ip], #8
-	ldcl p1, cr15, [ip], #8
+	ldcl p1, c10, [ip], #8
+	ldcl p1, c11, [ip], #8
+	ldcl p1, c12, [ip], #8
+	ldcl p1, c13, [ip], #8
+	ldcl p1, c14, [ip], #8
+	ldcl p1, c15, [ip], #8
 3:	tst lr,#1
 	moveq pc,lr
 	bx lr
